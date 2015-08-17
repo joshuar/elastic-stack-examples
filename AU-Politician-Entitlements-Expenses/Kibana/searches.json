@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "Entitlements-Charters",
+    "_type": "search",
+    "_source": {
+      "title": "Entitlements - Charters",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "politician",
+        "from-location",
+        "to-location",
+        "amount",
+        "url"
+      ],
+      "sort": [
+        "record_timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"entitlements-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"_type:charter\"}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "Entitlements-Flights",
+    "_type": "search",
+    "_source": {
+      "title": "Entitlements - Flights",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "politician",
+        "party",
+        "electorate",
+        "location-from",
+        "location-to",
+        "amount"
+      ],
+      "sort": [
+        "record_timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"entitlements-*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"_type:flight\"}},\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"fragment_size\":2147483647},\"filter\":[]}"
+      }
+    }
+  }
+]

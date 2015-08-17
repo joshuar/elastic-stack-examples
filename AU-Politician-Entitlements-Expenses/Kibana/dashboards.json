@@ -1,0 +1,47 @@
+[
+  {
+    "_id": "Entitlements-Charters",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Entitlements - Charters",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Entitlements-Charters-Origins-and-Destinations\",\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Entitlements-Charters-Amount-Spent-over-Time\",\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"columns\":[\"politician\",\"from-location\",\"to-location\",\"amount\",\"url\"],\"id\":\"Entitlements-Charters\",\"row\":7,\"size_x\":6,\"size_y\":5,\"sort\":[\"record_timestamp\",\"desc\"],\"type\":\"search\"},{\"id\":\"Entitlements-Charters-Average-Amount-Spent-by-Politician\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":5,\"col\":7,\"row\":7},{\"id\":\"Entitlements-Charters-Costs\",\"type\":\"visualization\",\"size_x\":6,\"size_y\":2,\"col\":7,\"row\":1}]",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "Entitlements-Flights",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Entitlements - Flights",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"columns\":[\"politician\",\"party\",\"electorate\",\"location-from\",\"location-to\",\"amount\"],\"id\":\"Entitlements-Flights\",\"row\":1,\"size_x\":7,\"size_y\":6,\"sort\":[\"record_timestamp\",\"desc\"],\"type\":\"search\"},{\"col\":8,\"id\":\"Entitlements-Flights-Origins-and-Destinations\",\"row\":1,\"size_x\":5,\"size_y\":6,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Entitlements-Flights-Amount-Spent-over-Time\",\"row\":7,\"size_x\":4,\"size_y\":3,\"type\":\"visualization\"},{\"id\":\"Entitlements-Flights-Cost\",\"type\":\"visualization\",\"size_x\":8,\"size_y\":3,\"col\":5,\"row\":7}]",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  },
+  {
+    "_id": "Entitlements-Trips",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Entitlements - Trips",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"Entitlements-Trips-Destinations\",\"row\":1,\"size_x\":6,\"size_y\":6,\"type\":\"visualization\"},{\"col\":4,\"id\":\"Entitlements-Trips-Political-Party\",\"row\":7,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Entitlements-Trips-Average-Nights-Stayed-and-Nightly-Rate-Spent\",\"row\":1,\"size_x\":6,\"size_y\":2,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Entitlements-Trips-Frequent-Flyers\",\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Entitlements-Trips-Home-State-and-Electorates\",\"row\":7,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Entitlements-Trips-Average-Spend-Per-Party\",\"row\":7,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"}]",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+      }
+    }
+  }
+]
