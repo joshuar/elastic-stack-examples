@@ -9,9 +9,10 @@ using the fantastic Kibana tool backed by Elasticsearch.
 # Directories
 
 * `Data`: cleaned data files used to import the data with Logstash.
-* `Logstash`: Logstash configuration files used to import the data.
 * `Elasticsearch`: Elasticsearch snapshot of the index containing the
 imported data, used by Kibana.
+* `Logstash`: Logstash configuration files used to import the data.
+* `Kibana`: Kibana dashboards, visualizations and searches pre-configured for the data.
 
 # Usage
 
@@ -24,9 +25,9 @@ the data.
 * In Elasticsearch, add the `Elasticsearch` directory in this git repo as an
 Elasticsearch snapshot repository and then import the snapshot
 *entitlements*.
-* In Kibana, import the dashboard/visulisations export in the `Kibana`
+* In Kibana, import the dashboard/visualizations export in the `Kibana`
 directory.
-* Check out the new **Entitlements - ...* dashboards in your Kibana
+* Check out the new **Entitlements - ...** dashboards in your Kibana
 instance.
 
 # Examples
