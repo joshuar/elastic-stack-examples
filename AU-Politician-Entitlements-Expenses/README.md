@@ -42,7 +42,15 @@ instance.
 
 ## (Re)Indexing the data
 
-In the `Logstash` directory, you will find the Logstash configs that
+You'll need to add the mapping template, which is located in the
+`Elasticsearch` directory.  This ensures the fields used will have the
+correct types in the index.
+
+```
+curl -XPUT _template/entitlements -d @Elasticsearch/template-entitlements.json
+```
+
+Next, in the `Logstash` directory, you will find the Logstash configs that
 were used to import the various files in the `Data` directory to
 Elasticsearch.  The mapping of config files to data files is as
 follows:
