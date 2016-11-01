@@ -55,7 +55,9 @@ cat ./localphotostories20092014csv.csv | path/to/logstash -f ./logstash.conf
 Configure a
 new
 [index pattern](https://www.elastic.co/guide/en/kibana/current/tutorial-define-index.html) in
-Kibana for the `abc_local_online` index.
+Kibana for the `abc_local_online` index:
+
+![Index Pattern](index-pattern.png)
 
 Next you should add
 a
