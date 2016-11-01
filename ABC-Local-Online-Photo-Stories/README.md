@@ -8,7 +8,11 @@ This data set contains metadata and links for around 8,500 stories
 created around Australia by ABC Local Online reporters. All the
 stories are currently published live on the abc.net.au site.
 
-## Data Structure
+## Example
+
+![Dashboard](dashboard-screenshot-1.png)
+
+## Structure
 
 The data consists of:
 * Photo Caption
