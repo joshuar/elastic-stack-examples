@@ -60,7 +60,9 @@ Kibana for the `abc_local_online` index.
 Next you should add
 a
 [field formatter](https://www.elastic.co/guide/en/kibana/current/field-formatters-string.html) fior
-the `primary_image` field to set it as a *URL* format.
+the `primary_image` field to set it as a *URL* format:
+
+![Primary Image Field Format](primary_image-field-format.png)
 
 Finally, select **Management->Saved Objects->Import** and locate the
 `kibana-export.json` file.  After importing, you should have a
