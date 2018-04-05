@@ -1,0 +1,44 @@
+{
+    "mappings": {
+        "doc": {
+            "properties": {
+                "@timestamp": {
+                    "type": "date"
+                },
+                "title": {
+                    "type": "text"
+                },
+                "url": {
+                    "type": "keyword"
+                },
+                "mediarss_url": {
+                    "type": "keyword"
+                },
+                "primary_image": {
+                    "type": "keyword"
+                },
+                "primary_image_rights_information": {
+                    "type": "text"
+                },
+                "primary_image_caption": {
+                    "type": "text"
+                },
+                "subjects": {
+                    "type": "keyword"
+                },
+                "station": {
+                    "type": "text"
+                },
+                "state": {
+                    "type": "keyword"
+                },
+                "place": {
+                    "type": "text"
+                },
+                "location": {
+                    "type": "geo_point"
+                }
+            }
+        }
+    }
+}
