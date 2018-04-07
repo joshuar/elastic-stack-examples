@@ -21,7 +21,12 @@
                     "type": "text"
                 },
                 "primary_image_caption": {
-                    "type": "text"
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
                 },
                 "subjects": {
                     "type": "keyword"
@@ -33,7 +38,12 @@
                     "type": "keyword"
                 },
                 "place": {
-                    "type": "text"
+                    "type": "text",
+                    "fields": {
+                        "keyword": {
+                            "type": "keyword"
+                        }
+                    }
                 },
                 "location": {
                     "type": "geo_point"
