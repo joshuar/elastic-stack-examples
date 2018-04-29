@@ -10,7 +10,7 @@ if ! type -P curl >/dev/null; then
 fi
 
 # Check command-line arguments
-$USAGE="Ex. usage: $0 -h 'https://host:port' -u user -p password path/to/logs"
+USAGE="Ex. usage: $0 -h 'https://host:port' -u user -p password path/to/logs"
 while getopts ":h:u:p:t" opt; do
     case $opt in
         h)
@@ -21,6 +21,9 @@ while getopts ":h:u:p:t" opt; do
             ;;
         p)
 			es_password=$OPTARG
+			;;
+		o)
+			overwrite=1
 			;;
 		\?)
 			echo "Invalid option: -$OPTARG" >&2
@@ -42,8 +45,19 @@ else
 fi
 
 # Check if we can actually connect to the specified Elasticsearch endpoint
-if ! $(curl -XGET ${auth} -s $es_endpoint | grep tagline 1> /dev/null); then
+response_code=$(curl -s -o /dev/null -w "%{http_code}" -XGET ${es_auth} ${es_endpoint})
+if [[ ${response_code} != "200" ]]; then
 	echo "$es_endpoint does not seem to be a valid Elasticsearch endpoint."
+	exit -1
+fi
+
+# Check if the index already exists and handle appropriately
+response_code=$(curl -s -o /dev/null -w "%{http_code}" -XGET ${es_auth} ${es_endpoint}/abc_local_online)
+if [[ ${response_code} == "200" ]] && ${overwrite}; then
+	echo "Existing index detected. Deleting as requested."
+	curl -XDELETE ${es_auth} ${es_endpoint}/abc_local_online
+else
+	echo "Index already exists! Specify -o option to remove it and reindex data."
 	exit -1
 fi
 
