@@ -50,6 +50,16 @@ if ! $(curl -XGET ${curl_args} -s $es_endpoint | grep tagline 1> /dev/null); the
 	exit -1
 fi
 
+# Check if the index already exists and handle appropriately
+response_code=$(curl -s -o /dev/null -w "%{http_code}" -XGET ${es_auth} ${es_endpoint}/abc_local_online)
+if [[ ${response_code} == "200" ]] && ${overwrite}; then
+	echo "Existing index detected. Deleting as requested."
+	curl -XDELETE ${es_auth} ${es_endpoint}/abc_local_online
+else
+	echo "Index already exists! Specify -o option to remove it and reindex data."
+	exit -1
+fi
+
 # Generate output plugin template
 echo -n "Creating Logstash output file..."
 ls_output_conf=${scriptdir}/logstash/03-output.conf
