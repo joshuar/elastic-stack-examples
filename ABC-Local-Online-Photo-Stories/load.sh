@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/bash -x
 
 scriptdir=$(readlink -f $0)
 scriptdir=$(dirname ${scriptdir})
@@ -9,9 +9,11 @@ if ! type -P curl >/dev/null; then
 	exit -1
 fi
 
+curl_args=""
+
 # Check command-line arguments
-$USAGE="Ex. usage: $0 -h 'https://host:port' -u user -p password path/to/logs"
-while getopts ":h:u:p:t" opt; do
+USAGE="Ex. usage: $0 -h 'https://host:port' -u user -p password path/to/logs"
+while getopts ":h:u:p:i" opt; do
     case $opt in
         h)
 			es_endpoint=$OPTARG
@@ -21,6 +23,9 @@ while getopts ":h:u:p:t" opt; do
             ;;
         p)
 			es_password=$OPTARG
+			;;
+		i)
+			curl_args="--insecure ${curl_args}"
 			;;
 		\?)
 			echo "Invalid option: -$OPTARG" >&2
@@ -36,13 +41,11 @@ while getopts ":h:u:p:t" opt; do
 done
 
 if [[ $es_username ]] && [[ $es_password ]]; then
-	es_auth="-u ${es_username}:${es_password}"
-else
-	es_auth=""
+	curl_args="-u ${es_username}:${es_password} ${curl_args}"
 fi
 
 # Check if we can actually connect to the specified Elasticsearch endpoint
-if ! $(curl -XGET ${auth} -s $es_endpoint | grep tagline 1> /dev/null); then
+if ! $(curl -XGET ${curl_args} -s $es_endpoint | grep tagline 1> /dev/null); then
 	echo "$es_endpoint does not seem to be a valid Elasticsearch endpoint."
 	exit -1
 fi
@@ -54,6 +57,7 @@ cat > ${ls_output_conf}<<EOF
 output {
   elasticsearch {
     hosts => [ "${es_endpoint}" ]
+	manage_template => false
 EOF
 if [[ $es_username ]] && [[ $es_password ]]; then
   cat >> ${ls_output_conf}<<EOF
@@ -70,7 +74,7 @@ echo "done!"
 
 # Add the index mapping to Elasticsearch
 echo "Adding index mapping..."
-curl -H 'Content-Type: application/json' -XPUT ${es_auth} ${es_endpoint}/abc_local_online -d @elasticsearch/mapping.json
+curl -H 'Content-Type: application/json' -XPUT ${curl_args} ${es_endpoint}/abc_local_online -d @elasticsearch/mapping.json
 echo 
 echo "done!"
 
